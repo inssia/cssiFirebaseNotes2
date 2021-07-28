@@ -31,17 +31,13 @@ function renderData (data) {
 }
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+    const color = Math.floor(Math.random() * 361);
+   return color;
 }
 
 function renderCard(note) {
 
-    
+
 
     const div = document.createElement('div');
     div.classList = 'column is-one-quarter';
@@ -51,7 +47,6 @@ function renderCard(note) {
 
     div.appendChild(card);
 
-    //note.style.background = getRandomColor();
 
     const header = document.createElement('header');
     header.classList ='card-header';
@@ -79,28 +74,18 @@ function renderCard(note) {
 
     const cardFooter = document.createElement('footer');
     cardFooter.classList = 'card-footer';
-    const name = document.createTextNode(`${googleUser.displayName}`);
+    const name = document.createElement('span');
+    name.classList = "card-footer-item";
+    const nameText = document.createTextNode(`${googleUser.displayName}`);
+    name.append(nameText);
     cardFooter.appendChild(name);
 
     card.appendChild(cardFooter);
 
-    card.style.background = getRandomColor();
+    card.style.background = `hsl(${getRandomColor()}, 80%, 70%)`;
 
     return div;
 
-    // return `
-    //     <div class="column is-one-quarter">
-    //         <div class="card">
-    //             <header class="card-header">
-    //                 <span class="card-header-title">${note.title}</span>
-    //                 <span class="card-header-title">${googleUser.displayName}</span>
-    //             </header>
-    //             <div class="card-content">
-    //                 <div class="content">${note.text}</div>
-    //             </div>
-    //         </div>
-    //     </div>
-    //     `;
 }
 
 
